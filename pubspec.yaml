@@ -13,9 +13,22 @@ dependencies:
 
   # Visual Elements
   cupertino_icons: ^1.0.2
+  cached_network_image: ^3.2.0
+  flutter_svg: ^1.0.3
+  animate_do: ^2.1.0
+  device_preview: ^1.0.0
+
+  # Api Connection
+  dio: ^4.0.4
+  connectivity_plus: ^2.2.0
 
   # State Management
   provider: ^6.0.2
+
+  # Json Operations
+  json_annotation: ^4.4.0
+  json_serializable: ^6.1.4
+  build_runner: ^2.1.7
 
 dev_dependencies:
   flutter_test:
@@ -26,3 +39,6 @@ dev_dependencies:
 flutter:
 
   uses-material-design: true
+
+  assets:
+    - assets/images/

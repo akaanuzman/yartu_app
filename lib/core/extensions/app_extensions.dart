@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../init/theme/custom_theme.dart';
 
 class AppExt {}
@@ -143,9 +144,12 @@ extension ThemeExtension on BuildContext {
 
   bool get isDarkMode => Theme.of(this).brightness == Brightness.dark;
 
-  // Color get primaryColor => const Color(0xFF5c3fbc);
   // Color get secondaryColor => const Color(0xFFdadbfe);
   // Color get secondaryVariant => const Color(0xFFffd301);
+  
+  Color get primaryColor => const Color(0xff3663F2);
+  Color get textColor => const Color(0xFF394C66);
+  Color get secondaryTextColor => const Color(0xff9AA1B4);
 
   // I use Apple Human Interface Guidelines
   // For detailed information: https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/color/
