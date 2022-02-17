@@ -9,12 +9,14 @@ class Headline6Text extends Text {
     required String data,
     Color? color,
     FontWeight? fontWeight,
+    double? fontSize,
   }) : super(
           data,
           key: key,
           style: context.textTheme.headline6!.copyWith(
             color: color ?? context.textColor,
             fontWeight: fontWeight ?? FontWeight.bold,
+            fontSize: fontSize
           ),
         );
 }

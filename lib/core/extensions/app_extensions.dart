@@ -148,8 +148,10 @@ extension ThemeExtension on BuildContext {
   // Color get secondaryVariant => const Color(0xFFffd301);
   
   Color get primaryColor => const Color(0xff3663F2);
+  Color get primaryVariantColor => const Color(0xffEFF4FA);
   Color get textColor => const Color(0xFF394C66);
   Color get secondaryTextColor => const Color(0xff9AA1B4);
+  Color get yellowSea => const Color(0xffF1AE04);
 
   // I use Apple Human Interface Guidelines
   // For detailed information: https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/color/

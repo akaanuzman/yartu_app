@@ -11,6 +11,7 @@ class PrimaryColorText extends Text {
           key: key,
           style: TextStyle(
             color: context.primaryColor,
+            fontWeight: FontWeight.w600
           ),
         );
 }

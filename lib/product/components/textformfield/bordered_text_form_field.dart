@@ -22,21 +22,23 @@ class BorderedTextFormField extends AppTextFormField {
     Widget? suffix,
     String? errorText,
     List<TextInputFormatter>? inputFormatters,
+    BorderRadius? borderRadius
   }) : super(
           key: key,
           context: context,
           labelText: labelText,
+          labelStyle: labelStyle,
           obscureText: obscureText,
           prefix: prefix,
           suffix: suffix,
           suffixIcon: suffixIcon,
           keyboardType: keyboardType,
           enabledBorder: OutlineInputBorder(
-            borderRadius: context.lowBorderRadius,
+            borderRadius: borderRadius ?? context.lowBorderRadius,
             borderSide: BorderSide(color: context.grey4),
           ),
           focusedBorder: OutlineInputBorder(
-            borderRadius: context.lowBorderRadius,
+            borderRadius: borderRadius ?? context.lowBorderRadius,
             borderSide: BorderSide(color: context.grey),
           ),
         );

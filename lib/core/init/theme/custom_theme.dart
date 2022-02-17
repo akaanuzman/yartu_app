@@ -26,24 +26,38 @@ class CustomTextTheme extends TextTheme {
   TextStyle get headline6 =>
       Theme.of(context).textTheme.headline6!.copyWith(color: context.label);
   @override
-  TextStyle get subtitle1 =>
-      Theme.of(context).textTheme.subtitle1!.copyWith(color: context.label);
+  TextStyle get subtitle1 => Theme.of(context).textTheme.subtitle1!.copyWith(
+        color: context.label,
+        fontWeight: FontWeight.w600,
+      );
   @override
-  TextStyle get subtitle2 =>
-      Theme.of(context).textTheme.subtitle2!.copyWith(color: context.label);
+  TextStyle get subtitle2 => Theme.of(context).textTheme.subtitle2!.copyWith(
+        color: context.label,
+        fontWeight: FontWeight.w600,
+      );
   @override
-  TextStyle get bodyText1 =>
-      Theme.of(context).textTheme.bodyText1!.copyWith(color: context.label);
+  TextStyle get bodyText1 => Theme.of(context).textTheme.bodyText1!.copyWith(
+        color: context.label,
+        fontWeight: FontWeight.w600,
+      );
   @override
-  TextStyle get bodyText2 =>
-      Theme.of(context).textTheme.bodyText2!.copyWith(color: context.label);
+  TextStyle get bodyText2 => Theme.of(context).textTheme.bodyText2!.copyWith(
+        color: context.label,
+        fontWeight: FontWeight.w600,
+      );
   @override
-  TextStyle get caption =>
-      Theme.of(context).textTheme.caption!.copyWith(color: context.label);
+  TextStyle get caption => Theme.of(context).textTheme.caption!.copyWith(
+        color: context.label,
+        fontWeight: FontWeight.w600,
+      );
   @override
-  TextStyle get button =>
-      Theme.of(context).textTheme.button!.copyWith(color: context.label);
+  TextStyle get button => Theme.of(context).textTheme.button!.copyWith(
+        color: context.label,
+        fontWeight: FontWeight.w600,
+      );
   @override
-  TextStyle get overline =>
-      Theme.of(context).textTheme.overline!.copyWith(color: context.label);
+  TextStyle get overline => Theme.of(context).textTheme.overline!.copyWith(
+        color: context.label,
+        fontWeight: FontWeight.w600,
+      );
 }

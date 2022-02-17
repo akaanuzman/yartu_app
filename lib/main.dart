@@ -1,13 +1,13 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
-import 'features/common/splash/view/splash_view.dart';
+import 'package:yartu_app/features/tabs/view/tabbar_view.dart';
 
 import 'core/init/navigation/navigation_route.dart';
 import 'core/init/navigation/navigation_service.dart';
 
 void main() => runApp(
       DevicePreview(
-        enabled: false,
+        enabled: true,
         builder: (_) => const MyApp(),
       ),
     );
@@ -21,6 +21,9 @@ class MyApp extends StatelessWidget {
         onGenerateRoute: NavigationRoute.generateRoute,
         title: 'YARTU',
         debugShowCheckedModeBanner: false,
-        home: const SplashView(),
+        theme: ThemeData(
+          fontFamily: "Manrope",
+        ),
+        home: const TabbarView(),
       );
 }

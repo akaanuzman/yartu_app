@@ -3,6 +3,8 @@ import 'package:flutter/services.dart';
 
 import '../../../core/extensions/app_extensions.dart';
 
+
+//TODO: Label kısmını değiştir.
 class AppTextFormField extends TextFormField {
   AppTextFormField(
       {Key? key,
@@ -39,16 +41,18 @@ class AppTextFormField extends TextFormField {
             labelText: labelText,
             labelStyle: labelStyle ??
                 context.textTheme.subtitle1!.copyWith(
-                  color: context.textColor,
-                  fontWeight: FontWeight.w500,
+                  color: context.secondaryTextColor,
+                  fontWeight: FontWeight.w600,
                 ),
             suffixIcon: suffixIcon,
             errorText: errorText,
             enabledBorder: enabledBorder,
             focusedBorder: focusedBorder,
           ),
-          style: context.textTheme.subtitle2!
-              .copyWith(fontWeight: FontWeight.w600, color: context.textColor),
+          style: context.textTheme.subtitle1!.copyWith(
+            fontWeight: FontWeight.w600,
+            color: context.textColor,
+          ),
           onSaved: onSaved,
           onChanged: onChanged,
           validator: validator,
