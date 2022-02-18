@@ -1,28 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:yartu_app/features/home/mail/tab/view/mail_tab_view.dart';
 import 'package:yartu_app/product/components/items/drawer_item.dart';
 import 'package:yartu_app/product/components/textformfield/bordered_text_form_field.dart';
 
 import '../../../../core/extensions/app_extensions.dart';
-import '../../../product/components/text/normal_text.dart';
 import '../model/tabbar_model.dart';
 
-class TabbarView extends StatefulWidget {
-  static const path = '/tabbar';
-
-  const TabbarView({Key? key}) : super(key: key);
-
-  @override
-  State<TabbarView> createState() => _TabbarViewState();
-}
-
-class _TabbarViewState extends State<TabbarView> {
+class TabbarView extends StatelessWidget {
   final List<TabbarModel> _tabItems = [
-    TabbarModel(icon: Icons.home, child: const Scaffold()),
-    TabbarModel(icon: Icons.mail_outline, child: const Scaffold()),
+    TabbarModel(icon: Icons.mail_outline, child: MailTabView()),
+    TabbarModel(icon: Icons.dashboard, child: const Scaffold()),
     TabbarModel(icon: Icons.description_outlined, child: const Scaffold()),
     TabbarModel(icon: Icons.folder, child: const Scaffold()),
     TabbarModel(icon: Icons.settings, child: const Scaffold()),
   ];
+
+  TabbarView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) => DefaultTabController(
         length: _tabItems.length,
@@ -31,45 +25,59 @@ class _TabbarViewState extends State<TabbarView> {
             child: _buildTabBar(context, _tabItems),
           ),
           body: _buildTabBarView(_tabItems),
-          appBar: AppBar(
-            backgroundColor: Colors.transparent,
-            elevation: 0,
-            iconTheme: IconThemeData(color: context.secondaryTextColor),
-            title: SizedBox(
-              height: context.dynamicHeight(0.05),
-              child: BorderedTextFormField(
-                prefix: const Icon(Icons.search),
-                context: context,
-                labelText: "Search",
-                borderRadius: context.normalBorderRadius,
-              ),
-            ),
-            actions: [
-              Padding(
-                padding: context.horizontalPaddingNormal,
-                child: Stack(
-                  children: [
-                    CircleAvatar(
-                      backgroundColor: context.yellowSea,
-                      child: const Text(
-                        "AŞ",
-                        style: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.w600),
-                      ),
-                    ),
-                    const Positioned(
-                      right: 0,
-                      child: CircleAvatar(
-                        radius: 6.5,
-                        backgroundColor: Colors.green,
-                      ),
-                    )
-                  ],
-                ),
-              )
-            ],
-          ),
+          appBar: _appBar(context),
           drawer: _drawer(context),
+        ),
+      );
+
+  AppBar _appBar(BuildContext context) => AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        iconTheme: IconThemeData(color: context.secondaryTextColor),
+        title: _appBarTextFormField(context),
+        actions: [
+          Padding(
+            padding: context.horizontalPaddingNormal,
+            child: Stack(
+              alignment: Alignment.topRight,
+              children: [_appBarCircleAvatar(context), _appBarOnlineIcon()],
+            ),
+          )
+        ],
+      );
+
+  Widget _appBarTextFormField(BuildContext context) => SizedBox(
+        height: context.dynamicHeight(0.04),
+        child: BorderedTextFormField(
+          context: context,
+          prefixIcon: Icon(
+            Icons.search,
+            color: context.secondaryTextColor,
+          ),
+          hintText: "Search...",
+          contentPadding: context.paddingLow,
+          borderRadius: context.normalBorderRadius,
+        ),
+      );
+
+  Widget _appBarCircleAvatar(BuildContext context) => Padding(
+        padding: context.paddingLow,
+        child: CircleAvatar(
+          backgroundColor: context.yellowSea,
+          child: const Text(
+            "AŞ",
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+          ),
+        ),
+      );
+
+  Widget _appBarOnlineIcon() => const Positioned(
+        child: Padding(
+          padding: EdgeInsets.all(8.0),
+          child: CircleAvatar(
+            radius: 6.5,
+            backgroundColor: Colors.green,
+          ),
         ),
       );
 
@@ -109,7 +117,7 @@ class _TabbarViewState extends State<TabbarView> {
           indicatorColor: Colors.transparent,
           indicator: BoxDecoration(
               border: Border.all(color: context.primaryColor),
-              borderRadius: context.lowBorderRadius,
+              borderRadius: context.extraLowBorderRadius,
               color: Colors.white),
           indicatorSize: TabBarIndicatorSize.label,
           tabs: _buildTabs(_items, context),
@@ -127,6 +135,6 @@ class _TabbarViewState extends State<TabbarView> {
         ),
       );
 
-  TabBarView _buildTabBarView(List<TabbarModel> models) =>
+  Widget _buildTabBarView(List<TabbarModel> models) =>
       TabBarView(children: models.map((e) => e.child).toList());
 }

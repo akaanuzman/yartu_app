@@ -10,7 +10,11 @@ class SpecialButton extends ElevatedButton {
       required String data})
       : super(
           onPressed: onTap ?? () {},
-          child: NormalText(data:data),
+          child: NormalText(
+            data: data,
+            context: context,
+            color: Colors.white,
+          ),
           style: _style(context),
           key: key,
         );

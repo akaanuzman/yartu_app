@@ -3,14 +3,14 @@ import 'package:flutter/services.dart';
 
 import '../../../core/extensions/app_extensions.dart';
 
-
-//TODO: Label kısmını değiştir.
 class AppTextFormField extends TextFormField {
   AppTextFormField(
       {Key? key,
       required BuildContext context,
-      required String labelText,
+      String? labelText,
       TextStyle? labelStyle,
+      String? hintText,
+      TextStyle? hintStyle,
       String? initialValue,
       String? Function(String?)? validator,
       Function(String?)? onSaved,
@@ -19,7 +19,9 @@ class AppTextFormField extends TextFormField {
       TextInputAction textInputAction = TextInputAction.next,
       TextInputType? keyboardType,
       bool obscureText = false,
+      EdgeInsetsGeometry? contentPadding,
       IconButton? suffixIcon,
+      Widget? prefixIcon,
       Widget? prefix,
       Widget? suffix,
       String? errorText,
@@ -36,6 +38,7 @@ class AppTextFormField extends TextFormField {
           obscureText: obscureText,
           inputFormatters: inputFormatters,
           decoration: InputDecoration(
+            contentPadding: contentPadding,
             prefix: prefix,
             suffix: suffix,
             labelText: labelText,
@@ -44,7 +47,14 @@ class AppTextFormField extends TextFormField {
                   color: context.secondaryTextColor,
                   fontWeight: FontWeight.w600,
                 ),
+            hintText: hintText,
+            hintStyle: hintStyle ??
+                context.textTheme.subtitle1!.copyWith(
+                  color: context.secondaryTextColor,
+                  fontWeight: FontWeight.w600,
+                ),
             suffixIcon: suffixIcon,
+            prefixIcon: prefixIcon,
             errorText: errorText,
             enabledBorder: enabledBorder,
             focusedBorder: focusedBorder,
@@ -56,6 +66,7 @@ class AppTextFormField extends TextFormField {
           onSaved: onSaved,
           onChanged: onChanged,
           validator: validator,
+          textAlign: TextAlign.left,
           key: key,
         );
 }

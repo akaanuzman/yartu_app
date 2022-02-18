@@ -68,8 +68,10 @@ extension RadiusExtension on BuildContext {
 extension BorderExtension on BuildContext {
   BorderRadius get normalBorderRadius =>
       BorderRadius.all(Radius.circular(width * 0.05));
-  BorderRadius get lowBorderRadius =>
+  BorderRadius get extraLowBorderRadius =>
       BorderRadius.all(Radius.circular(width * 0.02));
+        BorderRadius get lowBorderRadius =>
+      BorderRadius.all(Radius.circular(width * 0.035));
   BorderRadius get highBorderRadius =>
       BorderRadius.all(Radius.circular(width * 0.1));
 
@@ -152,7 +154,7 @@ extension ThemeExtension on BuildContext {
   Color get textColor => const Color(0xFF394C66);
   Color get secondaryTextColor => const Color(0xff9AA1B4);
   Color get yellowSea => const Color(0xffF1AE04);
-
+  Color get royalBlue => const Color(0xff3663F2);
   // I use Apple Human Interface Guidelines
   // For detailed information: https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/color/
   Color get red => isDarkMode

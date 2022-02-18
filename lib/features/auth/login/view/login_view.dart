@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../../core/base/view/base_view.dart';
@@ -30,32 +31,40 @@ class LoginView extends StatelessWidget {
         ),
       );
 
-  ListView _body(BuildContext context, LoginViewModel viewModel) => ListView(
-        physics: const BouncingScrollPhysics(),
-        padding: context.paddingMedium,
-        children: [
-          context.emptySizedHeightBoxNormal,
-          _logoTitle(context),
-          context.emptySizedHeightBoxLow3x,
-          _signInText(context),
-          context.emptySizedHeightBoxLow2x,
-          _welcomeBackText(context),
-          context.emptySizedHeightBoxLow3x,
-          _emailOrUsername(context,viewModel),
-          context.emptySizedHeightBoxLow3x,
-          _forgotPassword(context,viewModel),
-          _password(context, viewModel),
-          context.emptySizedHeightBoxLow2x,
-          _rememberMeSection(context, viewModel),
-          context.emptySizedHeightBoxLow2x,
-          SpecialButton(context: context, data: 'Sing In'),
-          context.emptySizedHeightBoxLow2x,
-          const Divider(
-            thickness: 1.5,
-          ),
-          _accountSide(context)
-        ],
-      );
+  Widget _body(BuildContext context, LoginViewModel viewModel) => FadeInUpBig(
+    child: ListView(
+          physics: const BouncingScrollPhysics(),
+          padding: context.paddingMedium,
+          children: [
+            context.emptySizedHeightBoxNormal,
+            _logoTitle(context),
+            context.emptySizedHeightBoxLow3x,
+            _signInText(context),
+            context.emptySizedHeightBoxLow2x,
+            _welcomeBackText(context),
+            context.emptySizedHeightBoxLow3x,
+            NormalText(
+              data: "Email or username",
+              context: context,
+            ),
+            context.emptySizedHeightBoxLow2x,
+            _emailOrUsername(context, viewModel),
+            context.emptySizedHeightBoxLow3x,
+            
+            _forgotPassword(context, viewModel),
+            _password(context, viewModel),
+            context.emptySizedHeightBoxLow2x,
+            _rememberMeSection(context, viewModel),
+            context.emptySizedHeightBoxLow2x,
+            SpecialButton(context: context, data: 'Sing In'),
+            context.emptySizedHeightBoxLow2x,
+            const Divider(
+              thickness: 1.5,
+            ),
+            _accountSide(context)
+          ],
+        ),
+  );
 
   Wrap _logoTitle(BuildContext context) => Wrap(
         crossAxisAlignment: WrapCrossAlignment.center,
@@ -77,23 +86,28 @@ class LoginView extends StatelessWidget {
         fontSize: 16,
       );
 
-  BorderedTextFormField _emailOrUsername(BuildContext context,LoginViewModel viewModel) =>
+  BorderedTextFormField _emailOrUsername(
+          BuildContext context, LoginViewModel viewModel) =>
       BorderedTextFormField(
         context: context,
-        labelText: "Email or Username",
-        labelStyle: viewModel.normalText(context),
+        hintText: "jhondoe@gmail.com",
+        hintStyle: viewModel.normalText(context),
         keyboardType: TextInputType.emailAddress,
       );
 
-  Align _forgotPassword(BuildContext context,LoginViewModel viewModel) => Align(
-        alignment: Alignment.centerRight,
-        child: TextButton(
-          onPressed: () {},
-          child: Text(
-            "Forgot Password ?",
-            style: viewModel.normalColorText(context),
+  Widget _forgotPassword(BuildContext context, LoginViewModel viewModel) =>
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          NormalText(data: "Password", context: context),
+          TextButton(
+            onPressed: () {},
+            child: Text(
+              "Forgot Password?",
+              style: viewModel.normalColorText(context),
+            ),
           ),
-        ),
+        ],
       );
 
   BorderedTextFormField _password(
@@ -101,8 +115,8 @@ class LoginView extends StatelessWidget {
       BorderedTextFormField(
         context: context,
         obscureText: viewModel.isObscure,
-        labelText: "Password",
-        labelStyle: viewModel.normalText(context),
+        hintText: "Password",
+        hintStyle: viewModel.normalText(context),
         suffixIcon: IconButton(
           onPressed: viewModel.changeIsObscure,
           icon: Icon(
@@ -131,7 +145,10 @@ class LoginView extends StatelessWidget {
         child: Wrap(
           crossAxisAlignment: WrapCrossAlignment.center,
           children: [
-            const NormalText(data: "Don't have an account?"),
+            NormalText(
+              data: "Don't have an account?",
+              context: context,
+            ),
             TextButton(
               onPressed: () {},
               child: PrimaryColorText(data: "Create account", context: context),
