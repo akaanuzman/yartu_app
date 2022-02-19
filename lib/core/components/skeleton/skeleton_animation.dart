@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
-import '../container/skeleton_container.dart';
+
 import '../../extensions/app_extensions.dart';
+import '../container/skeleton_container.dart';
 
 class SkeletonAnimation extends Shimmer {
   SkeletonAnimation({Key? key, required BuildContext context})

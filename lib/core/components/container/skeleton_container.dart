@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../extensions/app_extensions.dart';
 
 class SkeletonContainer extends AspectRatio {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../../../core/extensions/app_extensions.dart';
 
+import '../../../../../core/extensions/app_extensions.dart';
 import '../../../../tabs/model/tabbar_model.dart';
 import '../../all_mail/view/all_mail_view.dart';
 import '../../starred_mail/view/starred_mail_view.dart';

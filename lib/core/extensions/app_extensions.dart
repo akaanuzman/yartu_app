@@ -19,7 +19,8 @@ extension ContextExtension on BuildContext {
 extension MediaQueryExtension on BuildContext {
   double get height => mediaQuery.size.height;
   double get width => mediaQuery.size.width;
-
+  
+  double get extraLowValue => height * 0.0075;
   double get lowValue => height * 0.01;
   double get normalValue => height * 0.02;
   double get mediumValue => height * 0.04;
@@ -33,9 +34,12 @@ extension DurationExtension on BuildContext {
   Duration get durationLow => const Duration(milliseconds: 500);
   Duration get durationNormal => const Duration(seconds: 1);
   Duration get durationSlow => const Duration(seconds: 2);
+  Duration get durationExtraSlow => const Duration(seconds: 3);
+
 }
 
 extension PaddingExtension on BuildContext {
+  EdgeInsets get paddingExtraLow => EdgeInsets.all(extraLowValue);
   EdgeInsets get paddingLow => EdgeInsets.all(lowValue);
   EdgeInsets get paddingNormal => EdgeInsets.all(normalValue);
   EdgeInsets get paddingMedium => EdgeInsets.all(mediumValue);
@@ -70,6 +74,8 @@ extension BorderExtension on BuildContext {
       BorderRadius.all(Radius.circular(width * 0.05));
   BorderRadius get extraLowBorderRadius =>
       BorderRadius.all(Radius.circular(width * 0.02));
+  BorderRadius get xxLowBorderRadius =>
+      BorderRadius.all(Radius.circular(width * 0.01));
         BorderRadius get lowBorderRadius =>
       BorderRadius.all(Radius.circular(width * 0.035));
   BorderRadius get highBorderRadius =>
@@ -145,9 +151,6 @@ extension ThemeExtension on BuildContext {
   TextTheme get textTheme => CustomTextTheme(this);
 
   bool get isDarkMode => Theme.of(this).brightness == Brightness.dark;
-
-  // Color get secondaryColor => const Color(0xFFdadbfe);
-  // Color get secondaryVariant => const Color(0xFFffd301);
   
   Color get primaryColor => const Color(0xff3663F2);
   Color get primaryVariantColor => const Color(0xffEFF4FA);
@@ -155,6 +158,7 @@ extension ThemeExtension on BuildContext {
   Color get secondaryTextColor => const Color(0xff9AA1B4);
   Color get yellowSea => const Color(0xffF1AE04);
   Color get royalBlue => const Color(0xff3663F2);
+  Color get porselain => const Color(0xffF4F5F6);
   // I use Apple Human Interface Guidelines
   // For detailed information: https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/color/
   Color get red => isDarkMode

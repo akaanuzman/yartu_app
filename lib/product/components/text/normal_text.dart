@@ -9,7 +9,8 @@ class NormalText extends Text {
     required BuildContext context,
     Color? color,
     FontWeight? fontWeight,
-    double? fontSize
+    double? fontSize,
+    String? fontFamily,
   }) : super(
           data,
           key: key,
@@ -17,6 +18,7 @@ class NormalText extends Text {
             fontWeight: fontWeight ?? FontWeight.w600,
             color: color ?? context.textColor,
             fontSize: fontSize,
+            fontFamily: fontFamily,
           ),
         );
 }

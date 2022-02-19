@@ -44,7 +44,13 @@ flutter:
   assets:
     - assets/images/
 
+  # Default Font
   fonts:
     - family: Manrope
       fonts:
         - asset: assets/fonts/Manrope.ttf
+
+  # Other Font
+    - family: AvenirNext
+      fonts:
+        - asset: assets/fonts/Avenir-Next.otf

@@ -1,4 +1,7 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import '../../home/folders/view/folders_view.dart';
+import '../../home/upload/view/upload_view.dart';
 import '../../home/mail/tab/view/mail_tab_view.dart';
 import '../../../product/components/items/drawer_item.dart';
 import '../../../product/components/textformfield/bordered_text_form_field.dart';
@@ -7,12 +10,14 @@ import '../../../../core/extensions/app_extensions.dart';
 import '../model/tabbar_model.dart';
 
 class TabbarView extends StatelessWidget {
+  static const login = '/tabbar';
+
   final List<TabbarModel> _tabItems = [
     TabbarModel(icon: Icons.mail_outline, child: MailTabView()),
+    TabbarModel(icon: Icons.file_upload_outlined, child: const UploadView()),
+    TabbarModel(icon: Icons.folder, child: const FoldersView()),
     TabbarModel(icon: Icons.dashboard, child: const Scaffold()),
     TabbarModel(icon: Icons.description_outlined, child: const Scaffold()),
-    TabbarModel(icon: Icons.folder, child: const Scaffold()),
-    TabbarModel(icon: Icons.settings, child: const Scaffold()),
   ];
 
   TabbarView({Key? key}) : super(key: key);
@@ -82,21 +87,26 @@ class TabbarView extends StatelessWidget {
       );
 
   Drawer _drawer(BuildContext context) => Drawer(
-        child: ListView(
-          padding: context.paddingMedium,
-          children: [
-            DrawerItem(
-                context: context, icon: Icons.dashboard, text: "Dashboard"),
-            DrawerItem(
-                context: context, icon: Icons.mail_outline, text: "Messages"),
-            DrawerItem(
+        child: FadeInUp(
+          child: ListView(
+            padding: context.paddingMedium,
+            children: [
+              DrawerItem(
+                  context: context, icon: Icons.mail_outline, text: "Messages"),
+              DrawerItem(
                 context: context,
-                icon: Icons.description_outlined,
-                text: "Details"),
-            DrawerItem(context: context, icon: Icons.folder, text: "Folders"),
-            DrawerItem(
-                context: context, icon: Icons.settings, text: "Settings"),
-          ],
+                icon: Icons.file_upload_outlined,
+                text: "Items",
+              ),
+              DrawerItem(context: context, icon: Icons.folder, text: "Folders"),
+              DrawerItem(
+                  context: context, icon: Icons.dashboard, text: "Dashboard"),
+              DrawerItem(
+                  context: context,
+                  icon: Icons.description_outlined,
+                  text: "Details"),
+            ],
+          ),
         ),
       );
 
@@ -105,6 +115,7 @@ class TabbarView extends StatelessWidget {
         padding: EdgeInsets.only(bottom: context.lowValue),
         color: context.primaryVariantColor,
         child: TabBar(
+          physics: const BouncingScrollPhysics(),
           padding: EdgeInsets.fromLTRB(
             context.highValue,
             context.lowValue,

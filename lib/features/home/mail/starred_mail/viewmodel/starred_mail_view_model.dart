@@ -1,8 +1,7 @@
 import 'dart:async';
 
-import '../../../../../core/extensions/app_extensions.dart';
-
 import '../../../../../core/base/viewmodel/base_view_model.dart';
+import '../../../../../core/extensions/app_extensions.dart';
 
 class StarredMailViewModel extends BaseViewModel {
   bool isLoading = false;

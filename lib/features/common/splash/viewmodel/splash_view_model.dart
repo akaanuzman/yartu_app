@@ -8,7 +8,7 @@ import '../../../auth/login/view/login_view.dart';
 class SplashViewModel extends BaseViewModel {
   @override
   void init() {
-    Timer(context.durationNormal, goToLogin);
+    Timer(context.durationSlow, goToLogin);
   }
 
   void goToLogin() => NavigationService.pushNamed(LoginView.path);

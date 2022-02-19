@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -22,18 +23,20 @@ class SplashView extends StatelessWidget {
         ),
       );
 
-  Column _body(BuildContext context) => Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          // Logo
-          Center(
-            child: SvgPicture.asset("assets/images/logo.svg"),
-          ),
-          context.emptySizedHeightBoxLow,
-          // Text
-          Center(
-            child: Headline6Text(context: context, data: "YARTU"),
-          )
-        ],
-      );
+  Widget _body(BuildContext context) => ZoomIn(
+    child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // Logo
+            Center(
+              child: SvgPicture.asset("assets/images/logo.svg"),
+            ),
+            context.emptySizedHeightBoxLow,
+            // Text
+            Center(
+              child: Headline6Text(context: context, data: "YARTU"),
+            )
+          ],
+        ),
+  );
 }

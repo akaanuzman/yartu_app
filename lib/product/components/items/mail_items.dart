@@ -1,15 +1,18 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/components/text/headline6_text.dart';
 import '../../../core/extensions/app_extensions.dart';
 import '../text/normal_text.dart';
 
-class MailItems extends Container {
+class MailItems extends FadeInUp {
   MailItems({Key? key, required BuildContext context})
       : super(
           key: key,
-          decoration: _itemDecoration(context),
-          child: _item(context),
+          child: Container(
+            decoration: _itemDecoration(context),
+            child: _item(context),
+          ),
         );
   static BoxDecoration _itemDecoration(BuildContext context) => BoxDecoration(
         borderRadius: context.lowBorderRadius,
@@ -37,22 +40,32 @@ class MailItems extends Container {
             context: context,
             data: "AA",
             color: Colors.white,
+            fontFamily: "AvenirNext",
           ),
         ),
       );
 
-  static NormalText _title(BuildContext context) => NormalText(
-        data: "Task Examples",
-        context: context,
-        color: context.label,
-      );
+  static Widget _title(BuildContext context) => Padding(
+    padding: EdgeInsets.only(top: context.normalValue),
+    child: NormalText(
+          data: "Task Examples",
+          context: context,
+          color: context.label,
+          fontFamily: "AvenirNext",
+        ),
+  );
 
   static Column _subtitle(BuildContext context) => Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Text(
             "Dear, yartu team lorem ipsum dolor sit amet...",
-            style: TextStyle(color: context.label, fontWeight: FontWeight.w500),
+            style: TextStyle(
+              color: context.label,
+              fontWeight: FontWeight.w500,
+              fontFamily: "AvenirNext",
+              fontSize: 12
+            ),
           ),
           Icon(
             Icons.attach_file,
@@ -63,6 +76,7 @@ class MailItems extends Container {
                 "cihat@yartu.io",
             context: context,
             fontSize: 10,
+            fontFamily: "AvenirNext",
           ),
         ],
       );

@@ -4,7 +4,6 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../../../core/base/view/base_view.dart';
 import '../../../../core/components/text/body_text1.dart';
-import '../../../../core/components/text/headline4_text.dart';
 import '../../../../core/components/text/headline5_text.dart';
 import '../../../../core/components/text/headline6_text.dart';
 import '../../../../core/components/text/primary_color_text.dart';
@@ -32,8 +31,8 @@ class LoginView extends StatelessWidget {
         ),
       );
 
-  Widget _body(BuildContext context, LoginViewModel viewModel) => FadeInUpBig(
-    child: ListView(
+  Widget _body(BuildContext context, LoginViewModel viewModel) => FadeInUp(
+        child: ListView(
           physics: const BouncingScrollPhysics(),
           padding: context.paddingMedium,
           children: [
@@ -51,13 +50,12 @@ class LoginView extends StatelessWidget {
             context.emptySizedHeightBoxLow2x,
             _emailOrUsername(context, viewModel),
             context.emptySizedHeightBoxLow3x,
-            
             _forgotPassword(context, viewModel),
             _password(context, viewModel),
             context.emptySizedHeightBoxLow2x,
             _rememberMeSection(context, viewModel),
             context.emptySizedHeightBoxLow2x,
-            SpecialButton(context: context, data: 'Sing In'),
+            _button(context),
             context.emptySizedHeightBoxLow2x,
             const Divider(
               thickness: 1.5,
@@ -65,14 +63,14 @@ class LoginView extends StatelessWidget {
             _accountSide(context)
           ],
         ),
-  );
+      );
 
   Wrap _logoTitle(BuildContext context) => Wrap(
         crossAxisAlignment: WrapCrossAlignment.center,
         spacing: context.normalValue,
         children: [
           SvgPicture.asset("assets/images/logo.svg"),
-          Headline4Text(context: context, data: "YARTU"),
+          SvgPicture.asset("assets/images/yartu.svg"),
         ],
       );
 
@@ -96,8 +94,7 @@ class LoginView extends StatelessWidget {
         keyboardType: TextInputType.emailAddress,
       );
 
-  Widget _forgotPassword(BuildContext context, LoginViewModel viewModel) =>
-      Row(
+  Widget _forgotPassword(BuildContext context, LoginViewModel viewModel) => Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           NormalText(data: "Password", context: context),
@@ -140,6 +137,12 @@ class LoginView extends StatelessWidget {
           ),
           BodyText1Text(context: context, data: "Keep me logged in")
         ],
+      );
+
+  SpecialButton _button(BuildContext context) => SpecialButton(
+        context: context,
+        data: 'Sing In',
+        borderRadius: context.extraLowBorderRadius,
       );
 
   Center _accountSide(BuildContext context) => Center(

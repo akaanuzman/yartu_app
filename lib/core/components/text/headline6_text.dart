@@ -10,13 +10,15 @@ class Headline6Text extends Text {
     Color? color,
     FontWeight? fontWeight,
     double? fontSize,
+    String? fontFamily
   }) : super(
           data,
           key: key,
           style: context.textTheme.headline6!.copyWith(
             color: color ?? context.textColor,
             fontWeight: fontWeight ?? FontWeight.bold,
-            fontSize: fontSize
+            fontSize: fontSize,
+            fontFamily: fontFamily
           ),
         );
 }

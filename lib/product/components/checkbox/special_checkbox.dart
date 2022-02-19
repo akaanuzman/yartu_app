@@ -16,7 +16,7 @@ class SpecialCheckBox extends Checkbox {
             value == true ? context.primaryColor : context.grey5,
           ),
           shape: RoundedRectangleBorder(
-            borderRadius: context.lowBorderRadius*0.6,
+            borderRadius: context.xxLowBorderRadius,
           ),
         );
 }
