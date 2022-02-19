@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+
 import '../../../../core/base/view/base_view.dart';
 import '../../../../core/components/text/headline6_text.dart';
 import '../../../../core/extensions/app_extensions.dart';
-
 import '../viewmodel/splash_view_model.dart';
 
 class SplashView extends StatelessWidget {

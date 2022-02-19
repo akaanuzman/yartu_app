@@ -3,7 +3,7 @@ import 'dart:async';
 import '../../../../../core/base/viewmodel/base_view_model.dart';
 import '../../../../../core/extensions/app_extensions.dart';
 
-class AllMailViewModel extends BaseViewModel {
+class UnreadMailViewModel extends BaseViewModel {
   bool isLoading = false;
 
   @override

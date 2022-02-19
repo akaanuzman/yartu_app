@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:yartu_app/features/home/mail/tab/view/mail_tab_view.dart';
-import 'package:yartu_app/product/components/items/drawer_item.dart';
-import 'package:yartu_app/product/components/textformfield/bordered_text_form_field.dart';
+import '../../home/mail/tab/view/mail_tab_view.dart';
+import '../../../product/components/items/drawer_item.dart';
+import '../../../product/components/textformfield/bordered_text_form_field.dart';
 
 import '../../../../core/extensions/app_extensions.dart';
 import '../model/tabbar_model.dart';

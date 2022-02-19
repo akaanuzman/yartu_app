@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:yartu_app/core/extensions/app_extensions.dart';
+import '../../../../../core/extensions/app_extensions.dart';
 
 import '../../../../tabs/model/tabbar_model.dart';
 import '../../all_mail/view/all_mail_view.dart';
+import '../../starred_mail/view/starred_mail_view.dart';
+import '../../unread_mail/view/unread_mail_view.dart';
 
 class MailTabView extends StatelessWidget {
   final List<TabbarModel> _tabItems = [
     TabbarModel(text: "TÜMÜ", child: const AllMailView()),
-    TabbarModel(text: "OKUNMAMIŞ", child: const Scaffold()),
-    TabbarModel(text: "YILDIZLI", child: const Scaffold()),
+    TabbarModel(text: "OKUNMAMIŞ", child: const UnreadMailView()),
+    TabbarModel(text: "YILDIZLI", child: const StarredMailView()),
   ];
 
   MailTabView({Key? key}) : super(key: key);

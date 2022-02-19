@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../../core/extensions/app_extensions.dart';
 import '../text/normal_text.dart';
 

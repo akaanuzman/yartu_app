@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:yartu_app/core/extensions/app_extensions.dart';
+import '../../../core/extensions/app_extensions.dart';
 
 class DrawerItem extends Padding {
   DrawerItem({

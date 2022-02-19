@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:yartu_app/core/extensions/app_extensions.dart';
+
+import '../../../core/extensions/app_extensions.dart';
 
 class NormalText extends Text {
   NormalText({
@@ -7,12 +8,15 @@ class NormalText extends Text {
     required String data,
     required BuildContext context,
     Color? color,
+    FontWeight? fontWeight,
+    double? fontSize
   }) : super(
           data,
           key: key,
           style: TextStyle(
-            fontWeight: FontWeight.w600,
+            fontWeight: fontWeight ?? FontWeight.w600,
             color: color ?? context.textColor,
+            fontSize: fontSize,
           ),
         );
 }

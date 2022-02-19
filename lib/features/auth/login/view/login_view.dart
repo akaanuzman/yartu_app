@@ -1,17 +1,18 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+
 import '../../../../core/base/view/base_view.dart';
 import '../../../../core/components/text/body_text1.dart';
+import '../../../../core/components/text/headline4_text.dart';
+import '../../../../core/components/text/headline5_text.dart';
+import '../../../../core/components/text/headline6_text.dart';
 import '../../../../core/components/text/primary_color_text.dart';
 import '../../../../core/extensions/app_extensions.dart';
-import '../../../../core/components/text/headline6_text.dart';
 import '../../../../product/components/button/special_button.dart';
 import '../../../../product/components/checkbox/special_checkbox.dart';
 import '../../../../product/components/text/normal_text.dart';
 import '../../../../product/components/textformfield/bordered_text_form_field.dart';
-import '../../../../core/components/text/headline4_text.dart';
-import '../../../../core/components/text/headline5_text.dart';
 import '../viewmodel/login_view_model.dart';
 
 class LoginView extends StatelessWidget {

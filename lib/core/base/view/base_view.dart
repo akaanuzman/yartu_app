@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import '../viewmodel/base_view_model.dart';
 
 class BaseView<T extends BaseViewModel> extends StatefulWidget {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:yartu_app/core/extensions/app_extensions.dart';
+
+import '../../extensions/app_extensions.dart';
 
 abstract class BaseViewModel extends ChangeNotifier {
   late BuildContext context;
