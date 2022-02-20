@@ -7,7 +7,7 @@ import '../container/skeleton_container.dart';
 class SkeletonAnimation extends Shimmer {
   SkeletonAnimation({Key? key, required BuildContext context})
       : super(
-          duration: context.durationLow,
+          duration: context.durationExtraSlow,
           child: _borderedItem(context),
         );
 

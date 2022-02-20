@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
+
 import '../../../core/extensions/app_extensions.dart';
 
-class DrawerItem extends Padding {
+class DrawerItem extends InkWell {
   DrawerItem({
     Key? key,
     required BuildContext context,
     required IconData icon,
     required String text,
+    void Function()? onTap,
   }) : super(
+          key: key,
+          onTap: onTap ?? (){},
+          child: Padding(
             padding: context.verticalPaddingLow,
             key: key,
             child: Wrap(
@@ -24,5 +29,7 @@ class DrawerItem extends Padding {
                       color: context.textColor, fontWeight: FontWeight.w600),
                 )
               ],
-            ));
+            ),
+          ),
+        );
 }

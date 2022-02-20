@@ -7,6 +7,8 @@ import '../../starred_mail/view/starred_mail_view.dart';
 import '../../unread_mail/view/unread_mail_view.dart';
 
 class MailTabView extends StatelessWidget {
+  static const path = '/mailtab';
+
   final List<TabbarModel> _tabItems = [
     TabbarModel(text: "TÜMÜ", child: const AllMailView()),
     TabbarModel(text: "OKUNMAMIŞ", child: const UnreadMailView()),
@@ -24,17 +26,20 @@ class MailTabView extends StatelessWidget {
         ),
       );
 
-  AppBar _appBar(BuildContext context, List<TabbarModel> _items) => AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        bottom: _buildTabBar(context, _items),
+  PreferredSize _appBar(BuildContext context, List<TabbarModel> _items) =>
+      PreferredSize(
+        preferredSize: const Size.fromHeight(50),
+        child: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          bottom: _buildTabBar(context, _items),
+        ),
       );
 
   TabBar _buildTabBar(BuildContext context, List<TabbarModel> _items) => TabBar(
-        padding: context.horizontalPaddingLow,
         unselectedLabelColor: context.secondaryTextColor,
-        labelColor: Colors.white,
         labelStyle: const TextStyle(fontWeight: FontWeight.bold),
+        indicatorSize: TabBarIndicatorSize.label,
         indicator: BoxDecoration(
             border: Border.all(color: context.primaryColor),
             borderRadius: context.lowBorderRadius,
@@ -44,8 +49,19 @@ class MailTabView extends StatelessWidget {
 
   List<Widget> _buildTabs(BuildContext context) => List.generate(
         _tabItems.length,
-        (index) => Tab(
-          text: _tabItems[index].text,
+        (index) => AspectRatio(
+          aspectRatio: 2.5,
+          child: Container(
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              border: Border.all(color: context.primaryColor),
+              borderRadius: context.lowBorderRadius,
+            ),
+            child: Text(
+              _tabItems[index].text ?? "",
+              style: const TextStyle(fontSize: 12),
+            ),
+          ),
         ),
       );
 

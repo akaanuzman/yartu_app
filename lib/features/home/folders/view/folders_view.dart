@@ -1,12 +1,14 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../core/base/view/base_view.dart';
 import '../../../../core/components/text/body_text1.dart';
 import '../../../../core/extensions/app_extensions.dart';
 import '../../../../product/components/text/normal_text.dart';
-import '../../../../core/base/view/base_view.dart';
 import '../viewmodel/folders_view_model.dart';
 
 class FoldersView extends StatelessWidget {
+  static const path = '/folders';
   const FoldersView({Key? key}) : super(key: key);
 
   @override

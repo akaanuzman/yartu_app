@@ -1,12 +1,13 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import '../../home/folders/view/folders_view.dart';
-import '../../home/upload/view/upload_view.dart';
-import '../../home/mail/tab/view/mail_tab_view.dart';
-import '../../../product/components/items/drawer_item.dart';
-import '../../../product/components/textformfield/bordered_text_form_field.dart';
 
 import '../../../../core/extensions/app_extensions.dart';
+import '../../../core/init/navigation/navigation_service.dart';
+import '../../../product/components/items/drawer_item.dart';
+import '../../../product/components/textformfield/bordered_text_form_field.dart';
+import '../../home/folders/view/folders_view.dart';
+import '../../home/mail/tab/view/mail_tab_view.dart';
+import '../../home/upload/view/upload_view.dart';
 import '../model/tabbar_model.dart';
 
 class TabbarView extends StatelessWidget {
@@ -92,15 +93,28 @@ class TabbarView extends StatelessWidget {
             padding: context.paddingMedium,
             children: [
               DrawerItem(
-                  context: context, icon: Icons.mail_outline, text: "Messages"),
+                context: context,
+                icon: Icons.mail_outline,
+                text: "Messages",
+                onTap: () => NavigationService.pushNamed(MailTabView.path),
+              ),
               DrawerItem(
                 context: context,
                 icon: Icons.file_upload_outlined,
                 text: "Items",
+                onTap: () => NavigationService.pushNamed(UploadView.path),
               ),
-              DrawerItem(context: context, icon: Icons.folder, text: "Folders"),
               DrawerItem(
-                  context: context, icon: Icons.dashboard, text: "Dashboard"),
+                context: context,
+                icon: Icons.folder,
+                text: "Folders",
+                onTap: () => NavigationService.pushNamed(FoldersView.path),
+              ),
+              DrawerItem(
+                context: context,
+                icon: Icons.dashboard,
+                text: "Dashboard",
+              ),
               DrawerItem(
                   context: context,
                   icon: Icons.description_outlined,

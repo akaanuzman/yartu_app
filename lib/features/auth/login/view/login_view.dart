@@ -70,7 +70,7 @@ class LoginView extends StatelessWidget {
         spacing: context.normalValue,
         children: [
           SvgPicture.asset("assets/images/logo.svg"),
-          SvgPicture.asset("assets/images/yartu.svg"),
+          SvgPicture.asset("assets/images/Group.svg"),
         ],
       );
 

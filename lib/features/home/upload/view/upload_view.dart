@@ -1,14 +1,17 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../core/base/view/base_view.dart';
 import '../../../../core/components/text/body_text1.dart';
+import '../../../../core/extensions/app_extensions.dart';
 import '../../../../product/components/button/special_button.dart';
 import '../../../../product/components/items/upload_item.dart';
 import '../../../../product/components/text/normal_text.dart';
-import '../../../../core/extensions/app_extensions.dart';
-import '../../../../core/base/view/base_view.dart';
 import '../viewmodel/upload_view_model.dart';
 
 class UploadView extends StatelessWidget {
+  static const path = '/upload';
+
   const UploadView({Key? key}) : super(key: key);
 
   @override
@@ -20,19 +23,22 @@ class UploadView extends StatelessWidget {
         },
         onPageBuilder: (BuildContext context, UploadViewModel viewModel) =>
             Scaffold(
-          body: FadeInUp(
-            child: Padding(
-              padding: context.horizontalPaddingNormal,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  BodyText1Text(data: "Items", context: context),
-                  context.emptySizedHeightBoxLow2x,
-                  _uploadButton(context),
-                  _folderIcon(context)
-                ],
-              ),
-            ),
+          body: _body(context),
+        ),
+      );
+
+  FadeInUp _body(BuildContext context) => FadeInUp(
+        child: Padding(
+          padding: context.horizontalPaddingNormal,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              context.emptySizedHeightBoxLow3x,
+              BodyText1Text(data: "Items", context: context),
+              context.emptySizedHeightBoxLow2x,
+              _uploadButton(context),
+              _folderIcon(context)
+            ],
           ),
         ),
       );
