@@ -5,6 +5,7 @@ import '../../../features/home/upload/view/upload_view.dart';
 
 import '../../../features/auth/login/view/login_view.dart';
 import '../../../features/home/folders/view/folders_view.dart';
+import '../../../features/tabs/view/tabbar_view.dart';
 
 class NavigationRoute {
   static Route<CupertinoPageRoute> generateRoute(RouteSettings settings) {
@@ -12,7 +13,9 @@ class NavigationRoute {
 
     switch (settings.name) {
       case LoginView.path:
-        return CupertinoPageRoute(builder: (_) => const LoginView());
+        return CupertinoPageRoute(builder: (_) => LoginView());
+      case TabbarView.path:
+        return CupertinoPageRoute(builder: (_) => TabbarView());
       case MailTabView.path:
         return CupertinoPageRoute(builder: (_) => MailTabView());
       case UploadView.path:

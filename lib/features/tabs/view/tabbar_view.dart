@@ -11,7 +11,7 @@ import '../../home/upload/view/upload_view.dart';
 import '../model/tabbar_model.dart';
 
 class TabbarView extends StatelessWidget {
-  static const login = '/tabbar';
+  static const path = '/tabbar';
 
   final List<TabbarModel> _tabItems = [
     TabbarModel(icon: Icons.mail_outline, child: MailTabView()),

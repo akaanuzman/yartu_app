@@ -1,6 +1,10 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:yartu_app/core/init/navigation/navigation_service.dart';
+import 'package:yartu_app/product/components/alert/login_alert.dart';
 
 import '../../../../core/base/view/base_view.dart';
 import '../../../../core/components/text/body_text1.dart';
@@ -12,11 +16,18 @@ import '../../../../product/components/button/special_button.dart';
 import '../../../../product/components/checkbox/special_checkbox.dart';
 import '../../../../product/components/text/normal_text.dart';
 import '../../../../product/components/textformfield/bordered_text_form_field.dart';
+import '../../../tabs/view/tabbar_view.dart';
 import '../viewmodel/login_view_model.dart';
 
 class LoginView extends StatelessWidget {
   static const path = '/login';
-  const LoginView({Key? key}) : super(key: key);
+  var usernameController = TextEditingController();
+  var passwordController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
+  String usernameErrorText = "";
+  String passwordErrorText = "";
+
+  LoginView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) => BaseView<LoginViewModel>(
@@ -32,36 +43,39 @@ class LoginView extends StatelessWidget {
       );
 
   Widget _body(BuildContext context, LoginViewModel viewModel) => FadeInUp(
-        child: ListView(
-          physics: const BouncingScrollPhysics(),
-          padding: context.paddingMedium,
-          children: [
-            context.emptySizedHeightBoxNormal,
-            _logoTitle(context),
-            context.emptySizedHeightBoxLow3x,
-            _signInText(context),
-            context.emptySizedHeightBoxLow2x,
-            _welcomeBackText(context),
-            context.emptySizedHeightBoxLow3x,
-            NormalText(
-              data: "Email or username",
-              context: context,
-            ),
-            context.emptySizedHeightBoxLow2x,
-            _emailOrUsername(context, viewModel),
-            context.emptySizedHeightBoxLow3x,
-            _forgotPassword(context, viewModel),
-            _password(context, viewModel),
-            context.emptySizedHeightBoxLow2x,
-            _rememberMeSection(context, viewModel),
-            context.emptySizedHeightBoxLow2x,
-            _button(context),
-            context.emptySizedHeightBoxLow2x,
-            const Divider(
-              thickness: 1.5,
-            ),
-            _accountSide(context)
-          ],
+        child: Form(
+          key: _formKey,
+          child: ListView(
+            physics: const BouncingScrollPhysics(),
+            padding: context.paddingMedium,
+            children: [
+              context.emptySizedHeightBoxNormal,
+              _logoTitle(context),
+              context.emptySizedHeightBoxLow3x,
+              _signInText(context),
+              context.emptySizedHeightBoxLow2x,
+              _welcomeBackText(context),
+              context.emptySizedHeightBoxLow3x,
+              NormalText(
+                data: "Email or username",
+                context: context,
+              ),
+              context.emptySizedHeightBoxLow2x,
+              _emailOrUsername(context, viewModel),
+              context.emptySizedHeightBoxLow3x,
+              _forgotPassword(context, viewModel),
+              _password(context, viewModel),
+              context.emptySizedHeightBoxLow2x,
+              _rememberMeSection(context, viewModel),
+              context.emptySizedHeightBoxLow2x,
+              _button(context, viewModel),
+              context.emptySizedHeightBoxLow2x,
+              const Divider(
+                thickness: 1.5,
+              ),
+              _accountSide(context)
+            ],
+          ),
         ),
       );
 
@@ -89,9 +103,12 @@ class LoginView extends StatelessWidget {
           BuildContext context, LoginViewModel viewModel) =>
       BorderedTextFormField(
         context: context,
+        controller: usernameController,
+        validator: (username) => usernameErrorText = viewModel.appValidator.emailCheck(username),
         hintText: "jhondoe@gmail.com",
         hintStyle: viewModel.normalText(context),
         keyboardType: TextInputType.emailAddress,
+        errorText: usernameErrorText,
       );
 
   Widget _forgotPassword(BuildContext context, LoginViewModel viewModel) => Row(
@@ -112,6 +129,9 @@ class LoginView extends StatelessWidget {
           BuildContext context, LoginViewModel viewModel) =>
       BorderedTextFormField(
         context: context,
+        controller: passwordController,
+        validator: (password) =>
+            passwordErrorText = viewModel.appValidator.passwordCheck(password),
         obscureText: viewModel.isObscure,
         hintText: "Password",
         hintStyle: viewModel.normalText(context),
@@ -124,6 +144,7 @@ class LoginView extends StatelessWidget {
                 : context.primaryColor,
           ),
         ),
+        errorText: passwordErrorText,
       );
 
   Wrap _rememberMeSection(BuildContext context, LoginViewModel viewModel) =>
@@ -139,10 +160,21 @@ class LoginView extends StatelessWidget {
         ],
       );
 
-  SpecialButton _button(BuildContext context) => SpecialButton(
+  SpecialButton _button(BuildContext context, LoginViewModel viewModel) =>
+      SpecialButton(
         context: context,
         data: 'Sing In',
         borderRadius: context.extraLowBorderRadius,
+        onTap: () async {
+          await viewModel.fetchLoginItems(
+              usernameController.text, passwordController.text);
+          if (viewModel.item.ok != null) {
+            viewModel.item.ok!
+                ? NavigationService.pushNamed(TabbarView.path)
+                : _showAlertDialog(context, viewModel);
+          }
+          _formKey.currentState!.validate();
+        },
       );
 
   Center _accountSide(BuildContext context) => Center(
@@ -160,4 +192,14 @@ class LoginView extends StatelessWidget {
           ],
         ),
       );
+
+  void _showAlertDialog(BuildContext context, LoginViewModel viewModel) {
+    showDialog(
+      context: context,
+      builder: (context) => LoginAlert(
+        context: context,
+        viewModel: viewModel,
+      ),
+    );
+  }
 }

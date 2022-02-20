@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:yartu_app/core/utils/app_validators.dart';
 
 import '../../extensions/app_extensions.dart';
+import '../../init/network/network_manager.dart';
 
 abstract class BaseViewModel extends ChangeNotifier {
   late BuildContext context;
+  String accessToken = "";
+
+  NetworkManager get networkManager => NetworkManager.instance;
+  AppValidators get appValidator => AppValidators.instance;
+
 
   void setState() {
     notifyListeners();

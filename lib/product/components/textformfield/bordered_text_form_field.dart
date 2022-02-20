@@ -27,16 +27,19 @@ class BorderedTextFormField extends AppTextFormField {
       Widget? suffix,
       String? errorText,
       List<TextInputFormatter>? inputFormatters,
-      BorderRadius? borderRadius})
+      BorderRadius? borderRadius,
+      TextEditingController? controller})
       : super(
           key: key,
           context: context,
+          controller: controller,
           labelText: labelText,
           labelStyle: labelStyle,
           hintText: hintText,
           hintStyle: hintStyle,
           obscureText: obscureText,
           contentPadding: contentPadding,
+          validator: validator,
           prefix: prefix,
           suffix: suffix,
           suffixIcon: suffixIcon,
@@ -50,5 +53,6 @@ class BorderedTextFormField extends AppTextFormField {
             borderRadius: borderRadius ?? context.lowBorderRadius,
             borderSide: BorderSide(color: context.grey),
           ),
+       
         );
 }
