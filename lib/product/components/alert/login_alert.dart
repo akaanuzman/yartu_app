@@ -31,7 +31,7 @@ class LoginAlert extends AlertDialog {
       );
 
   static FlipInY get _content => FlipInY(
-        child: const Text("Wrong email password please try again."),
+        child: const Text("Wrong email or password please try again."),
       );
 
   static FlipInY _okButton(BuildContext context) => FlipInY(

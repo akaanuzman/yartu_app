@@ -18,7 +18,9 @@ class LoginViewModel extends BaseViewModel {
   // Api connection
   Future<void> fetchLoginItems(String username, String password) async {
     item = await loginService.fetchLoginItems(username, password);
-    // debugPrint(item.ok.toString());
+    if (item.access_token != null) {
+      accessToken = item.access_token!;
+    }
     setState();
   }
 
